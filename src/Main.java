@@ -7,11 +7,16 @@ public class Main {
         ReadFile readFile = new ReadFile();
         List<String> list =  readFile.readfile("test.cpp");
         System.out.println(list.toString());
+        
 
-        Analyzer analyzer = new Analyzer();
+//        Analyzer analyzer = new Analyzer();
 
-        for (int i = 0; i <list.size() ; i++) {
-            analyzer.Handler(list.get(i));
-        }
+
+//        List<String>list1 =  analyzer.Trim("int a;int b;int c;",';');
+//        System.out.println(list1.toString());
+
+//        for (int i = 0; i <list.size() ; i++) {
+//            analyzer.Handler(list.get(i));
+//        }
     }
 }

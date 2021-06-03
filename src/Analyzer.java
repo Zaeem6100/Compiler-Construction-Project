@@ -10,31 +10,32 @@ public class Analyzer {
         map = readFile.read_Hashmap("HashMAp.txt");
     }
 
-    public  List<String> Trim( String st,String op){
+    public  List<String> Trim(String st,char op){
         List<String> list = new LinkedList<>();
-        String st1 = null;
+        String st1 = "";
         for (int i = 0; i <st.length(); i++) {
             st1 = st1 + st.charAt(i);
-            if(st.charAt(i) == ';'){
+            if(st.charAt(i) == op){
                 list.add(st1);
+                st1 ="";
             }
         }
         return list;
     }
 
-    public String[] Trim1(String list, String op) {
-        String[] list1 = list.split(op);
-        return list1;
-    }
+//    public String[] Trim1(String list, String op) {
+//        String[] list1 = list.split(" ");
+//        return list1;
+//    }
 
-    public String[] tokenize(List<String> list) {
-        String[] tokens = new String[0];
-
-        for (int i = 0; i < list.size(); i++) {
-            List<String> secondArray = Trim(list.get(i), " ;");
-        }
-        return tokens;
-    }
+//    public String[] tokenize(List<String> list) {
+//        String[] tokens = new String[0];
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            List<String> secondArray = Trim(list.get(i), " ;");
+//        }
+//        return tokens;
+//    }
 
     private boolean specialCharacter(String inputString) {
 
@@ -78,26 +79,26 @@ public class Analyzer {
         return st1;
     }
 
-    public boolean Handler(String st){
-        boolean flag = false;
-        List<String> st1 = Arrays.asList(Trim(st, ";"));
-//        st1 = convertList(st1, ";");
-
-        for (int j = 0; j < st1.size(); j++) {
-            String[] st2 = Trim(st1.get(j), "\\s");
-
-            for (int i = 0; i < st2.length-1; i++) {
-                if (map.containsValue(st2[i])) {
-                    Node node = new Node(st2[i], map.get(st2[i]));
-                    this.queue.add(node);
-                }
-                else if (isValid(st2[i])) {
-                    Node node = new Node(st2[i],"Identifier");
-                    this.queue.add(node);
-                }
-            }
-        }
-
-        return flag;
-    }
+//    public boolean Handler(String st){
+//        boolean flag = false;
+//        List<String> st1 = Arrays.asList(Trim(st, ";"));
+////        st1 = convertList(st1, ";");
+//
+//        for (int j = 0; j < st1.size(); j++) {
+//            String[] st2 = Trim(st1.get(j), "\\s");
+//
+//            for (int i = 0; i < st2.length-1; i++) {
+//                if (map.containsValue(st2[i])) {
+//                    Node node = new Node(st2[i], map.get(st2[i]));
+//                    this.queue.add(node);
+//                }
+//                else if (isValid(st2[i])) {
+//                    Node node = new Node(st2[i],"Identifier");
+//                    this.queue.add(node);
+//                }
+//            }
+//        }
+//
+//        return flag;
+//    }
 }
