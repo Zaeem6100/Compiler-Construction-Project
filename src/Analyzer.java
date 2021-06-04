@@ -23,10 +23,10 @@ public class Analyzer {
         return list;
     }
 
-//    public String[] Trim1(String list, String op) {
-//        String[] list1 = list.split(" ");
-//        return list1;
-//    }
+    public  List<String> Trim1(String list, char op) {
+        List<String> list1 = Arrays.asList(list.split(" "));
+        return list1;
+    }
 
 //    public String[] tokenize(List<String> list) {
 //        String[] tokens = new String[0];
@@ -39,7 +39,7 @@ public class Analyzer {
 
     private boolean specialCharacter(String inputString) {
 
-        String specialCharactersString = "!@#$%&',./:<>?[]^`|";
+        String specialCharactersString = "!@#$%&',./:<>?^`|";
         for (int i = 0; i < inputString.length(); i++) {
             char ch = inputString.charAt(i);
             if (specialCharactersString.contains(Character.toString(ch))) {
@@ -78,14 +78,21 @@ public class Analyzer {
         }
         return st1;
     }
+    private  boolean brackets(char ch){
+        if (ch == '(' || ch == ')' || ch =='{' || ch == '}'){
+            return true;
+        }
+        return false;
+    }
 
-//    public boolean Handler(String st){
-//        boolean flag = false;
-//        List<String> st1 = Arrays.asList(Trim(st, ";"));
-////        st1 = convertList(st1, ";");
-//
+    public boolean Handler(String st){
+        boolean flag = false;
+        List<String> st1 = (Trim1(st, ' '));
+        String temp = "";
+//        st1 = convertList(st1, ";");
+
 //        for (int j = 0; j < st1.size(); j++) {
-//            String[] st2 = Trim(st1.get(j), "\\s");
+//            String[] st2 = Trim(st1.get(j), ' ');
 //
 //            for (int i = 0; i < st2.length-1; i++) {
 //                if (map.containsValue(st2[i])) {
@@ -98,7 +105,45 @@ public class Analyzer {
 //                }
 //            }
 //        }
-//
-//        return flag;
-//    }
+
+        for (int i = 0; i < st1.size(); i++) {
+
+
+            System.out.println(st1.get(i));
+            if (map.containsValue(st1.get(i))){
+                Node node = new Node(st1.get(i),map.get(st1.get(i)));
+                    this.queue.add(node);
+                    flag =true;
+            }else if (isValid(st1.get(i))){
+                Node node = new Node(st1.get(i),"Identifier");
+                    this.queue.add(node);
+                    flag=true;
+            }else {
+                for (int j = 0; j < st1.get(i).length(); j++) {
+                    // if it is letter
+                    if (Character.isLetter(st1.get(i).charAt(j))){
+                        temp = temp+ st1.get(i).charAt(j);
+                    }
+                    //todo case  if it is special character
+
+                    // if the next character is not letter and map contains the value
+                    if ( j<=st1.get(i).length()  &&  !Character.isLetter(st1.get(i).charAt(j+1))){
+                        if (map.containsValue(temp)){
+                            Node node = new Node(temp,map.get(st1.get(i)));
+                            this.queue.add(node);
+                            flag =true;
+                        }
+                    }
+                }
+            }
+        }
+        return flag;
+    }
+
+    public void  print(){
+
+
+
+        System.out.println(queue.toString());
+    }
 }

@@ -9,7 +9,9 @@ public class Main {
         System.out.println(list.toString());
         
 
-//        Analyzer analyzer = new Analyzer();
+       Analyzer analyzer = new Analyzer();
+       analyzer.Handler("void main(){}");
+       analyzer.print();
 
 
 //        List<String>list1 =  analyzer.Trim("int a;int b;int c;",';');
