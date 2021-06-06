@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Analyzer {
     public Queue<Node> queue = new LinkedList<>();
@@ -26,6 +29,10 @@ public class Analyzer {
     public  List<String> Trim1(String list, char op) {
         List<String> list1 = Arrays.asList(list.split(" "));
         return list1;
+    }
+    public  List<String> Trim(String code){
+        Pattern pat = Pattern.compile("\\w+|[<>(){}]");
+        return  pat.matcher(code).results().map(MatchResult::group).collect(Collectors.toList());
     }
 
 //    public String[] tokenize(List<String> list) {
@@ -141,9 +148,6 @@ public class Analyzer {
     }
 
     public void  print(){
-
-
-
         System.out.println(queue.toString());
     }
 }

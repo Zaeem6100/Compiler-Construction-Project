@@ -10,8 +10,7 @@ public class Main {
         
 
        Analyzer analyzer = new Analyzer();
-       analyzer.Handler("void main(){}");
-       analyzer.print();
+        System.out.println(analyzer.Trim("cout << Hello world "));
 
 
 //        List<String>list1 =  analyzer.Trim("int a;int b;int c;",';');
