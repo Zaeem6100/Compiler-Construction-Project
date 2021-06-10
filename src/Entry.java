@@ -4,6 +4,7 @@ public class Entry {
     HashMap<String,String> map ;
     public void  InputHashMap(){
         HashMap<String,String> map = new HashMap<>() ;
+
         map.put("int","keyword");
         map.put("void","keyword");
         map.put("main","keyword");

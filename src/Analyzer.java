@@ -44,6 +44,7 @@ public class Analyzer {
 //        return tokens;
 //    }
 
+
     private boolean specialCharacter(String inputString) {
 
         String specialCharactersString = "!@#$%&',./:<>?^`|";
@@ -67,8 +68,7 @@ public class Analyzer {
             //invalid
         }
         for (int i = 1; i < str.length(); i++) {
-            if (!((str.charAt(i) >= 'a' && str.charAt(i) <= 'z')
-                    || (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')
+            if (!((str.charAt(i) >= 'a' && str.charAt(i) <= 'z') || (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')
                     || (str.charAt(i) >= '0' && str.charAt(i) <= '9')
                     || str.charAt(i) == '_'))
                 return false;
@@ -140,6 +140,7 @@ public class Analyzer {
         for (int i = 0; i < st1.size(); i++) {
             String str = st1.get(i).replaceAll("\\s", "");
             st1.set(i,str);
+
 //            System.out.println(st1.get(i));
             if (map.containsValue(st1.get(i))){
                 Node node = new Node(st1.get(i),map.get(st1.get(i)));
@@ -160,9 +161,6 @@ public class Analyzer {
                     if (Character.isDigit(st1.get(i).charAt(j))){
                         digit = digit+ st1.get(i).charAt(j);
                     }
-
-                    //todo case  if it is special character
-
                     // if the next character is not letter and map contains the value
                     if ( j<st1.get(i).length()-1  &&  !Character.isLetter(st1.get(i).charAt(j+1))){
                         if (map.containsValue(temp)){
