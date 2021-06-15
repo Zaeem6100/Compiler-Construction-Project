@@ -13,14 +13,14 @@ public class Analyzer {
         map = readFile.read_Hashmap("HashMAp.txt");
     }
 
-    public  List<String> Trim(String list, char op) {
+    public List<String> Trim(String list, char op) {
         List<String> list1 = Arrays.asList(list.split(String.valueOf(op)));
         return list1;
     }
 
-    public  List<String> Trim(String code){
+    public List<String> Trim(String code) {
         Pattern pat = Pattern.compile("\\w+|[<>*+=(){}]");
-        return  pat.matcher(code).results().map(MatchResult::group).collect(Collectors.toList());
+        return pat.matcher(code).results().map(MatchResult::group).collect(Collectors.toList());
     }
 
 //    public String[] tokenize(List<String> list) {
@@ -72,14 +72,15 @@ public class Analyzer {
         }
         return st1;
     }
-    private  boolean brackets(char ch){
-        if (ch == '(' || ch == ')' || ch =='{' || ch == '}'){
+
+    private boolean brackets(char ch) {
+        if (ch == '(' || ch == ')' || ch == '{' || ch == '}') {
             return true;
         }
         return false;
     }
 
-    public boolean Handler(String st){
+    public boolean Handler(String st) {
         boolean flag = false;
         List<String> st1 = (Trim(st));
 
@@ -87,34 +88,34 @@ public class Analyzer {
         String digit = "";
         for (int i = 0; i < st1.size(); i++) {
             String str = st1.get(i).replaceAll("\\s", "");
-            st1.set(i,str);
+            st1.set(i, str);
 
 //            System.out.println(st1.get(i));
-            if (map.containsKey(st1.get(i))){
-                Node node = new Node(st1.get(i),map.get(st1.get(i)));
+            if (map.containsKey(st1.get(i))) {
+                Node node = new Node(st1.get(i), map.get(st1.get(i)));
                 this.queue.add(node);
-                flag =true;
-            }else if (isValid(st1.get(i))){
-                Node node = new Node(st1.get(i),"Identifier");
+                flag = true;
+            } else if (isValid(st1.get(i))) {
+                Node node = new Node(st1.get(i), "Identifier");
                 this.queue.add(node);
-                flag=true;
-            }else {
+                flag = true;
+            } else {
 
                 for (int j = 0; j < st1.get(i).length(); j++) {
                     // if it is letter
-                    if (Character.isLetter(st1.get(i).charAt(j))){
-                        temp = temp+ st1.get(i).charAt(j);
+                    if (Character.isLetter(st1.get(i).charAt(j))) {
+                        temp = temp + st1.get(i).charAt(j);
                     }
 
-                    if (Character.isDigit(st1.get(i).charAt(j))){
-                        digit = digit+ st1.get(i).charAt(j);
+                    if (Character.isDigit(st1.get(i).charAt(j))) {
+                        digit = digit + st1.get(i).charAt(j);
                     }
                     // if the next character is not letter and map contains the value
-                    if ( j<st1.get(i).length()-1  &&  !Character.isLetter(st1.get(i).charAt(j+1))){
-                        if (map.containsValue(temp)){
-                            Node node = new Node(temp,map.get(st1.get(i)));
+                    if (j < st1.get(i).length() - 1 && !Character.isLetter(st1.get(i).charAt(j + 1))) {
+                        if (map.containsValue(temp)) {
+                            Node node = new Node(temp, map.get(st1.get(i)));
                             this.queue.add(node);
-                            flag =true;
+                            flag = true;
                         }
                     }
                 }
@@ -123,7 +124,7 @@ public class Analyzer {
         return flag;
     }
 
-    public void  print(){
+    public void print() {
         System.out.println(queue.toString());
     }
 

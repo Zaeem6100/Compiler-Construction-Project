@@ -1,5 +1,5 @@
 public class Node {
-    public String object ;
+    public String object;
     public String value;
 
     public Node(String object, String value) {
