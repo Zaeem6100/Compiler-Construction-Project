@@ -13,19 +13,6 @@ public class Analyzer {
         map = readFile.read_Hashmap("HashMAp.txt");
     }
 
-//    public  List<String> Trim(String st,char op){
-//        List<String> list = new LinkedList<>();
-//        String st1 = "";
-//        for (int i = 0; i <st.length(); i++) {
-//            st1 = st1 + st.charAt(i);
-//            if(st.charAt(i) == op){
-//                list.add(st1);
-//                st1 ="";
-//            }
-//        }
-//        return list;
-//    }
-
     public  List<String> Trim(String list, char op) {
         List<String> list1 = Arrays.asList(list.split(String.valueOf(op)));
         return list1;
@@ -57,7 +44,6 @@ public class Analyzer {
             } else if (i == inputString.length() - 1) {
                 return true;
             }
-
         }
         return false;
     }
@@ -93,11 +79,10 @@ public class Analyzer {
         return false;
     }
 
-    private List<String> test ;
-        public boolean Handler(String st){
+    public boolean Handler(String st){
         boolean flag = false;
         List<String> st1 = (Trim(st));
-        test = st1;
+
         String temp = "";
         String digit = "";
         for (int i = 0; i < st1.size(); i++) {
@@ -142,9 +127,6 @@ public class Analyzer {
         System.out.println(queue.toString());
     }
 
-    public List<String> getTest() {
-        return test;
-    }
 }
 
 // todo anaylizer code pending
