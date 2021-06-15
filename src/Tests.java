@@ -41,4 +41,42 @@ public class Tests {
 //        }
 //        return flag;
 //    }
+
+//    public boolean Handler(String st){
+//        boolean flag = false;
+////        List<String> st1 = (Trim1(st, ' '));
+//        String temp = "";
+//        for (int i = 0; i < st.length(); i++) {
+////            System.out.println(st1.get(i));
+//            if (map.containsKey(st)){
+//                Node node = new Node(st,map.get(st));
+//                this.queue.add(node);
+//                flag =true;
+//
+//            }
+//            if (isValid(st)){
+//                Node node = new Node(st,"Identifier");
+//                this.queue.add(node);
+//                flag=true;
+//            }
+//
+//            // if it is letter
+//            if (Character.isLetter(st.charAt(i))){
+//                temp = temp+ st.charAt(i);
+//            }
+//            if (st.charAt(i) ==' '){}
+//            //todo case  if it is special character
+//
+//            // if the next character is not letter and map contains the value
+//            if ( i<st.length()-1  &&  !Character.isLetter(st.charAt(i+1))  && st.charAt(i) != ' '){
+//
+//                if (map.containsValue(temp)){
+//                    Node node = new Node(temp,map.get(st));
+//                    this.queue.add(node);
+//                    flag =true;
+//                }
+//            }
+//        }
+//        return flag;
+//    }
 }
